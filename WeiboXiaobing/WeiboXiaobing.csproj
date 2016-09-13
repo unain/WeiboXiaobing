@@ -39,7 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>D:\GITHUB\HtmlFetcherAndParser-master\HTMLFetchAndParse\HTMLFetchAndParse\bin\Debug\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\HtmlFetcherAndParser\HTMLFetchAndParse\HTMLFetchAndParse\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

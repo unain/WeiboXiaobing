@@ -110,11 +110,16 @@ namespace WeiboXiaobing
                              string mid = ParseJsonp(result, @"dmid"":""(.*)"",""dm_type");
                              SetUnRead(mid);
                          }
+                         if (result.Contains(@""":{""type"":""unreader"""))
+                         {
+                             string mid = ParseJsonp(result, @"lastmid"":(.*),""dm_isRemind");
+                             SetUnRead(mid);
+                         }
                      }
                      catch (Exception e)
                      {
                          Console.WriteLine(e.Message);
-                         return;
+                        
                      }
                  }
              });
@@ -225,10 +230,11 @@ namespace WeiboXiaobing
                 String result = string.Empty;         
                 if (replys.TryTake(out result))
                 {
-                    if (result.Contains(@""":{""type"":""msg"""))
+                    if (result.Contains(@""":{""type"":""msg""") )
                     {
                         return ParseJsonp(result, @"content"":""(.*)"",""time");
                     }
+                    
                 }
             }
 
@@ -236,6 +242,7 @@ namespace WeiboXiaobing
         static void Main()
         {
             var s = new Xiaobing();
+            //Thread.Sleep(1000 * 30);
             Console.WriteLine(s.Say("hi"));
             Console.WriteLine(s.Say("你好吗"));
             Console.WriteLine(s.Say("睡了没"));
