@@ -223,7 +223,7 @@ namespace WeiboXiaobing
             var resultx = this.Send(message);
             dynamic ssss = JObject.Parse(resultx);
             this.Subscript2(message, (string)(ssss.mid));
-            
+            int i = 0;
             while (true)
             {
 
@@ -235,6 +235,13 @@ namespace WeiboXiaobing
                         return ParseJsonp(result, @"content"":""(.*)"",""time");
                     }
                     
+                }
+                Thread.Sleep(1000);
+                i++;
+                if (i > 10)
+                {
+                    Console.WriteLine("超时:" + message);
+                    return "分享图片";
                 }
             }
 
